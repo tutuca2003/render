@@ -1,0 +1,30 @@
+{% extends "./base.html" %}
+
+{% block content %}
+        <h5>Agentes correspondientes al Sector Mecanica</h5>
+{% endblock %} 
+{% block body %}
+    
+  <div class="d-flex justify-content-center">
+    <table class="table table-striped">
+        <tr >
+          <th>Legajo</th>
+          <th>Nombre</th>
+          <th>Area</th>
+          <th>Opciones</th>
+        </tr>
+          {% for c in agentes %}
+          <tr>
+          <td>{{c.legajo}}</td> 
+          <td>{{c.nombre}}</td>
+          <td>{{c.area}}</td>
+          <td><a href="../compensatorios/{{c.legajo}}">Compensar</a>&emsp;
+              <a href="../vacaciones/{{c.legajo}}">Vacaciones</a>&emsp;
+              <a href="../articulos/{{c.legajo}}">Articulos</a></td>
+          
+        </tr>
+          {% endfor %}
+    </table>
+</div>  
+{% endblock %}
+

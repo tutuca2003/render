@@ -1,0 +1,33 @@
+{% extends "./base.html" %}
+{% block content %}
+        <h5>{{datosagente}}</h5>
+{% endblock %} 
+
+{% block body %}
+    
+    <table class="table">
+        
+                    <tr>
+                         <th>Dia Trabajado</th>
+                         <th>Horas</th>
+                         <th>Detalle</th>
+                    </tr>
+            {% for c in listado %}
+                {% if c.motivo == 1 %}
+                    <tr class="table-success"> 
+                {% else %}   
+                    <tr class="table-light"> 
+                {% endif %}
+                        <td>{{c.diaCompensatorio}}</td>
+                        <td>{{c.horas}}</td>
+                        <td>{{c.detalle}}</td>
+                    </tr>
+            {% endfor %}
+                    <tr class="table-secondary">
+                        <th>Horas restantes a compensar</th>
+                        <th>{{total}}</th>
+                        <th></th>
+                    </tr>
+    </table>
+{% endblock %}
+

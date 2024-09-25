@@ -1,0 +1,59 @@
+﻿{% extends "./base.html" %}
+{% block content %}
+        <h5>{{datosagente}}</h5>
+{% endblock %} 
+{% block body %}
+    
+    <table class="table">
+        
+                    <tr>
+                         <th>Creacion del Articulo</th>
+                         <th>Dia de Articulo</th>
+                         <th>Cantidad dia/hs</th>
+                         <th>Permiso Solicitado</th>
+                    </tr>
+            {% for c in listado %}
+                    <tr> 
+                        <td>{{c.diaCreacion}}</td>
+                        <td>{{c.diaArticulo}}</td>
+                        {% if c.cantidadDias > 0 %}
+                            <td>{{c.cantidadDias}}</td>
+                        {% else %}
+                            <td>{{c.cantidadHoras}}</td> 
+                        {% endif %}
+                        {% if c.permiso == 0 %}
+                            <td>Compensatorio</td>
+                        {% elif c.permiso == 1 %}   
+                            <td>Comision</td>
+                        {% elif c.permiso == 2 %}   
+                            <td>Art155 Tramite</td>
+                        {% elif c.permiso == 3 %}   
+                            <td>Permiso Especial</td>
+                        {% elif c.permiso == 4 %}   
+                            <td>Citacion Judicial</td>
+                        {% elif c.permiso == 5 %}   
+                            <td>Donacion de Sangre</td>
+                        {% elif c.permiso == 6 %}   
+                            <td>Licencia Ordinaria Anual</td>
+                        {% elif c.permiso == 7 %}   
+                            <td>Licencia por Matrimonio</td>
+                        {% elif c.permiso == 8 %}   
+                            <td>Licencia Matrimonio Hijos</td>
+                        {% elif c.permiso == 9 %}   
+                            <td>Licencia Nacimiento Hijos</td>
+                        {% elif c.permiso == 10 %}   
+                            <td>Licencia Examen</td>
+                        {% else %}   
+                            <td>Licencia Fallecimiento de Pariente</td>
+                        {% endif %}
+                        <td><a href="../articulosPantalla/{{c.id}}">Imprimir</a></td>
+                    </tr>
+            {% endfor %}
+                  <!--  <tr class="table-secondary">
+                        <th>Vacaciones parar tomar</th>
+                        <th>{{total}}</th>
+                        <th></th>
+                    </tr>-->
+    </table>
+  
+{% endblock %}

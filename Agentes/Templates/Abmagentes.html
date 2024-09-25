@@ -1,0 +1,31 @@
+{% extends "./base.html" %}
+
+{% block body %}
+   <!-- <div class="card" style="width: 18rem;">
+        <div class="card-body">
+           <form action="/registrarAgente/" method="post">{% csrf_token %}
+               <input type="number" class="form-control" id="legajo" name="legajo" placeholder="Legajo" minlength="4" maxlength="4" required  >
+               <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" minlength="8" maxlength="50" required>
+               <button type="submit" class="btn btn-primary">Guardar</button>
+          </form>
+        </div>
+    </div>
+
+    <table>
+        <tr>
+          <th>Legajo</th>
+          <th>Nombre</th>
+        </tr>
+          {% for c in agentes %}
+          <tr>
+          <td>{{c.legajo}}</td> 
+          <td>{{c.nombre}}</td>
+          <td>{{c.area}}</td>
+          <td><a href="edicionAgente/{{c.legajo}}">Editar</a></td> 
+          <td><a href="eliminarAgente/{{c.legajo}}" class="btnEliminacion" >Eliminar</a></td>  
+          <td><a href="compensatorios/{{c.legajo}}">Compensar</a></td>  
+        </tr>
+          {% endfor %}
+    </table>-->
+{% endblock %}
+

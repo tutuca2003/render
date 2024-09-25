@@ -1,0 +1,25 @@
+{% extends "./base.html" %}
+
+{% block content %}
+        <h5>Listado de Agentes con Articulos Tomados Segundo Semestre 2024</h5>
+{% endblock %}                    
+
+{% block body %}
+       <table class="table table-striped">
+                <tr>
+                     <th>Legajo</th>
+                     <th>Nombre Agente</th>
+                     <th >Dia Articulo Tomado</th>
+                    
+                </tr>
+                {% for c in listado %}
+                        
+                        <tr>
+                            <td>{{c.legajo}}</td>
+                            <td>{{c.legajo__nombre}}</td>
+                            <td >{{c.diaArticulo}}</td>
+                        </tr>
+                        
+                {% endfor %}
+        </table>
+{% endblock %}

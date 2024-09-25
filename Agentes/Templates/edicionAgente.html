@@ -1,0 +1,17 @@
+{% extends "./base.html" %}
+
+{% block body %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+           <form action="/editarAgente/" method="post">{% csrf_token %}
+               <input type="number" class="form-control" id="legajo" name="legajo" placeholder="Legajo" minlength="4" maxlength="4" required  value="{{agente.legajo}}">
+               <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" minlength="8" maxlength="50" required value="{{agente.nombre}}">
+               <input type="text" class="form-control" id="area" name="area" placeholder="Area" minlength="4" maxlength="50" required value="{{agente.area}}">
+               <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+    </div>
+
+   
+{% endblock %}
+

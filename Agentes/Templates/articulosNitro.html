@@ -1,0 +1,36 @@
+{% extends "./base.html" %}
+
+{% block content %}
+        <h5>Listado de Agentes con Acuerdo Nitro</h5>
+{% endblock %}                    
+
+{% block body %}
+       <table class="table">
+                <tr>
+                     <th class="text-center">Nombre Agente</th>
+                     <th class="text-center">Febrero</th>
+                     <th class="text-center">Marzo</th>
+                     <th class="text-center">Abril</th>
+                     <th class="text-center">Mayo</th>
+                     <th class="text-center">Junio</th>
+                     <th class="text-center">Julio</th>
+                     <th class="text-center">Agosto</th>
+                     <th class="text-center">Septiembre</th>
+                     <th class="text-center">Octubre</th>
+                     <th class="text-center">Noviembre</th>
+                     <th class="text-center">Diciembre</th>
+                </tr>
+                {% for key, value in dic.items %}
+                <tr>
+                      <td class="text-center">{{key}}</td>
+                      {% for mes in meses %}
+                      <td class="text-center">
+                         {% if mes in value %}
+                         <i class="fa-solid fa-square-check fa-2xl" style="color: #63E6BE;"></i></i><!--{{ mes }}-->
+                         {% endif %}
+                      </td>
+                      {% endfor %}
+                </tr>
+                {% endfor %}
+        </table>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "./base.html" %}
+{% block content %}
+        <h5>{{datosagente}}</h5>
+{% endblock %} 
+{% block body %}
+    
+    <table class="table">
+     
+                    <tr>
+                         <th>Habilitacion Vacaciones</th>
+                         <th>Dias</th>
+                         <th>Detalle</th>
+                    </tr>
+            {% for c in listado %}
+                {% if c.motivo == 1 %}
+                    <tr class="table-success"> 
+                {% else %}   
+                    <tr class="table-light"> 
+                {% endif %}
+                        <td>{{c.diaVacaciones}}</td>
+                        <td>{{c.dias}}</td>
+                        <td>{{c.detalle}}</td>
+                    </tr>
+            {% endfor %}
+                    <tr class="table-secondary">
+                        <th>Vacaciones parar tomar</th>
+                        <th>{{total}}</th>
+                        <th></th>
+                    </tr>
+    </table>
+{% endblock %}

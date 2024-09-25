@@ -1,0 +1,26 @@
+{% extends "./base.html" %}
+
+{% block content %}
+        <h5>Listado de Agentes a Compensar</h5>
+{% endblock %}                    
+
+{% block body %}
+        <table class="table table-striped">
+                <tr>
+                     <th>Legajo</th>
+                     <th>Nombre Agente</th>
+                     <th>Horas</th>
+                    
+                </tr>
+                {% for c in listado %}
+                        {% if c.total_horas > 0 %}
+                        <tr>
+                            <td>{{c.legajo}}</td>
+                            <td>{{c.legajo__nombre}}</td>
+                            <td>{{c.total_horas}}</td>
+                        </tr>
+                        {% endif %}        
+                {% endfor %}
+        </table>
+{% endblock %}
+
