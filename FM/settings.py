@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-_o1l6ybr=_*iwdj*==qiyo8q1q(scjprw(v*6ny5g7c3kh(1*)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['render-bia7.onrender.com']
+ALLOWED_HOSTS = ['18.116.203.26','localhost']
 
 
 # Application definition
@@ -76,12 +76,12 @@ WSGI_APPLICATION = 'FM.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-#DATABASES = {
- #   'default': {
-  #      'ENGINE': 'django.db.backends.sqlite3',
-   #     'NAME': 'FM.db',
-    #}
-#}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'FM.db',
+    }
+}
 
 #DATABASES = {
    # 'default': {
