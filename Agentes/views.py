@@ -214,7 +214,7 @@ def articuloTotal(request):
     listado = (Articulo.objects.select_related('legajo')
               .values('legajo', 'legajo__nombre','diaArticulo')
               .filter(diaArticulo__gt = fecha_busqueda, permiso=3)
-              .order_by('legajo__nombre'))
+              .order_by('-diaArticulo'))
     print(listado)
 
     return render(request, "articulosTotal.html", {"listado":listado})
