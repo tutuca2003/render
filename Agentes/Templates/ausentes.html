@@ -1,0 +1,37 @@
+{% extends "./base.html" %}
+
+{% block content %}
+        <h5>Listado de Agentes Ausentes</h5>
+{% endblock %}                    
+
+{% block body %}
+    
+        <table class="table table-striped">
+                <tr>
+                     <th>Legajo</th>
+                     <th>Nombre Agente</th>
+                     <th>Motivo</th>
+                </tr>
+                {% for c in lista %}
+                <tr>
+                     <td>{{c.legajo}}</td>
+                     <td>{{c.nombre}}</td>
+                     <td>Vacaciones</td>
+                </tr>
+                {% endfor %}
+                {% for c in listadoa %}
+                <tr>
+                     <td>{{c.legajo}}</td>
+                     <td>{{c.legajo__nombre}}</td>
+                     <td>Articulo</td>
+                </tr>
+                {% endfor %}
+                {% for c in listac %}
+                <tr>
+                     <td>{{c.legajo}}</td>
+                     <td>{{c.nombre}}</td>
+                     <td>Compensatorio</td>
+                </tr>
+                {% endfor %}
+        </table>
+{% endblock %}

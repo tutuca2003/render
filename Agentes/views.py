@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Agente, Compensatorio, Vacaciones, Articulo
 from django.db.models import Sum, Count, F, Case, When, Value, IntegerField, Subquery
 import datetime
+from datetime import timedelta, date
 
 # Create your views here.
 def home(request):
@@ -267,3 +268,40 @@ def vacacioneTotal(request):
               .order_by('legajo'))
     
     return render(request, "vacacionesTotal.html", {"listado":listado})
+
+def ausentes(request):
+    
+    listadov = (Vacaciones.objects.select_related('legajo')
+              .values('legajo', 'legajo__nombre','diaVacaciones','dias', 'motivo')
+              .filter(motivo = 1)
+              .order_by('legajo'))
+    hoy=date.today()
+    lista=[]          
+
+    for n in listadov:
+        dia=n['dias'] - 1
+        ausente = n['diaVacaciones'] + timedelta(days=dia)
+        if n['diaVacaciones'] <= hoy <= ausente:
+            lista.append({"legajo": n['legajo'], "nombre": n['legajo__nombre']})
+
+    listadoa = (Articulo.objects.select_related('legajo')
+              .values('legajo', 'legajo__nombre','diaArticulo','cantidadDias')
+              .filter(diaArticulo = hoy, permiso=3)
+              .order_by('-diaArticulo'))        
+
+    listadoc = (Compensatorio.objects.select_related('legajo')
+              .values('legajo', 'legajo__nombre','legajo__area', 'diaCompensatorio','horas')
+              .filter(motivo=1)
+              .order_by('legajo'))          
+    
+    listac=[]
+    for n in listadoc:
+        if n['legajo__area'] != 11:
+            dia=int(n['horas']/6 - 1)
+        else:
+            dia=int(n['horas']/8 - 1)
+        ausente = n['diaCompensatorio'] + timedelta(days=dia)
+        if n['diaCompensatorio'] <= hoy <= ausente:
+            listac.append({"legajo": n['legajo'], "nombre": n['legajo__nombre']})
+
+    return render(request, "ausentes.html", {"lista":lista, "listadoa":listadoa, 'listac':listac})

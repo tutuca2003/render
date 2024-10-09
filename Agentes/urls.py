@@ -19,4 +19,5 @@ urlpatterns=[
     path('articulosTotal', views.articuloTotal),
     path('articulosNitro', views.articuloNitro),
     path('vacacionesTotal', views.vacacioneTotal),
+    path('ausentes', views.ausentes),
 ]
